@@ -90,7 +90,7 @@ cat <<EOL > scripts/deploy.js
 const hre = require("hardhat");
 
 async function main() {
-  const contract = await hre.ethers.deployContract("Swisstronik", ["Hello Swisstronik from feature_earning!!"]);
+  const contract = await hre.ethers.deployContract("Swisstronik", ["Hello Swisstronik from 0xPRATIK"]);
   await contract.waitForDeployment();
   console.log(\`Swisstronik contract deployed to \${contract.target}\`);
 }
@@ -130,7 +130,7 @@ async function main() {
   const contractFactory = await hre.ethers.getContractFactory("Swisstronik");
   const contract = contractFactory.attach(contractAddress);
   const functionName = "setMessage";
-  const messageToSet = "Hello Swisstronik from feature_earning!!";
+  const messageToSet = "Hello Swisstronik from 0xPRATIK";
   const setMessageTx = await sendShieldedTransaction(signer, contractAddress, contract.interface.encodeFunctionData(functionName, [messageToSet]), 0);
   await setMessageTx.wait();
   console.log("Transaction Receipt: ", setMessageTx);
